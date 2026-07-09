@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hexaduo Receipt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #171310; }
+  @keyframes stampIn { 0% { transform: rotate(-12deg) scale(2.4); opacity: 0; } 55% { transform: rotate(-12deg) scale(.94); opacity: 1; } 100% { transform: rotate(-12deg) scale(1); opacity: 1; } }
+  @keyframes ledBlink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: .25; } }
+</style>
+</head>
+<body>
+
+<div id="scene" style="position: fixed; inset: 0; overflow: hidden; background: radial-gradient(1000px 760px at 50% 20%, rgba(255,233,200,.09), rgba(255,233,200,0) 72%), #171310; perspective: 1300px; perspective-origin: 50% 14%; font-family: 'Space Mono', 'Courier New', monospace;">
+
+  <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 470px; max-width: 96vw; height: 60px; z-index: 6; background: linear-gradient(180deg, #2e2925, #1c1815 78%, #12100d); border-radius: 0 0 18px 18px; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.06);">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: #8fe6a4; box-shadow: 0 0 8px rgba(143,230,164,.9); animation: ledBlink 1.5s steps(1) infinite;"></span>
+      <span style="font-size: 10px; letter-spacing: 3px; color: #8d8378;">HEXADUO POS · HD-02</span>
+    </div>
+    <div style="position: absolute; left: 50%; bottom: 9px; transform: translateX(-50%); width: 404px; max-width: 88%; height: 9px; border-radius: 6px; background: #070605; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.05);"></div>
+  </div>
+
+  <div style="position: absolute; top: 46px; left: 0; right: 0; bottom: 0; z-index: 2;">
+    <div id="wrap" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateY(-120%); transform-origin: top center; transform-style: preserve-3d; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; will-change: transform;">
+      <div id="paper" style="position: relative; width: 378px; padding: 24px 22px 34px; box-sizing: border-box; color: #28221c; background: repeating-linear-gradient(0deg, rgba(31,26,20,.02) 0px, rgba(31,26,20,.02) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 3px), linear-gradient(90deg, rgba(31,26,20,.07), rgba(0,0,0,0) 9%, rgba(0,0,0,0) 91%, rgba(31,26,20,.07)), #f7f2e8; box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 12px 28px rgba(0,0,0,.4);">
+
+        <div style="text-align: center;">
+          <pre style="display: inline-block; margin: 0 auto 10px; font-family: inherit; font-size: 11px; line-height: 1.3; font-weight: 700; text-align: left;">  ____        ____
+ /    \      /    \
+/ HEXA \____/ DUO  \
+\      /____\      /
+ \____/      \____/</pre>
+          <div style="font-size: 19px; font-weight: 700; letter-spacing: 3px;">HEXADUO VENTURES</div>
+          <div style="font-size: 10px; letter-spacing: 4px; margin-top: 5px;">INDEPENDENT iOS APP STUDIO</div>
+          <div style="font-size: 10px; letter-spacing: 2px; margin-top: 3px; opacity: .65;">EST. 2026 · A PARTY OF TWO</div>
+        </div>
+
+        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 12px 0 8px;">------------------------------------------------------</div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 11px;"><span>RECEIPT #<span id="rno">000001</span></span><span id="date"></span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 3px;"><span>CASHIER: HAFIZI</span><span id="time"></span></div>
+
+        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 8px 0 10px;">------------------------------------------------------</div>
+
+        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">2×</span><span style="flex: none; font-weight: 700;">FOUNDERS</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">FREE</span></div>
+        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">1×</span><span style="flex: none; font-weight: 700;">BIG DREAM</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">NO LIMIT</span></div>
+        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">1×</span><span style="flex: none; font-weight: 700;">FIRST APP (iOS)</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">SOON</span></div>
+        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">∞×</span><span style="flex: none; font-weight: 700;">ESPRESSO</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">SUNK COST</span></div>
+
+        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; margin: 6px 0 10px;">======================================================</div>
+
+        <div style="position: relative;">
+          <div style="display: flex; justify-content: space-between; font-size: 11.5px;"><span>SUBTOTAL</span><span>GOOD VIBES</span></div>
+          <div style="display: flex; justify-content: space-between; font-size: 11.5px; margin-top: 3px;"><span>TAX</span><span>NONE</span></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; font-weight: 700; margin-top: 8px;"><span>TOTAL</span><span>$$$</span></div>
+          <div style="text-align: center; font-size: 10px; letter-spacing: 1.5px; opacity: .65; margin-top: 10px;">PAID IN FULL</div>
+          <div id="stamp" hidden style="position: absolute; right: -4px; top: -26px; z-index: 3; pointer-events: none; animation: stampIn .38s cubic-bezier(.2,1.7,.45,1) both;">
+            <div style="border: 3px solid var(--accent, #b3362a); color: var(--accent, #b3362a); border-radius: 999px; padding: 7px 16px; font-weight: 700; font-size: 14px; letter-spacing: 3px; box-shadow: inset 0 0 0 1.5px var(--accent, #b3362a); opacity: .88; mix-blend-mode: multiply; background: rgba(247,242,232,.15);">APPROVED</div>
+          </div>
+        </div>
+
+        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 12px 0;">------------------------------------------------------</div>
+
+        <div style="border: 1.5px solid rgba(40,34,28,.85); padding: 9px 10px; text-align: center; font-size: 10.5px; letter-spacing: 2px;">DRAG ME · TAP TO STAMP</div>
+
+        <div id="bars" style="display: flex; justify-content: center; align-items: flex-end; margin: 18px 0 6px; height: 46px;"></div>
+        <div style="text-align: center; font-size: 10px; letter-spacing: 8px; padding-left: 8px; margin-bottom: 14px;">HEXADUO</div>
+
+        <div style="text-align: center;">
+          <div style="font-size: 12.5px; font-weight: 700; letter-spacing: 2px;">THANK YOU &amp; STAY TUNED</div>
+          <div style="font-size: 10px; letter-spacing: 1.5px; opacity: .7; margin-top: 4px;">SEE YOU ON THE APP STORE · 2026</div>
+          <div style="font-size: 12px; margin-top: 10px; color: var(--accent, #b3362a);">· ♥ ·</div>
+        </div>
+
+        <div style="position: absolute; left: 0; right: 0; bottom: -11px; height: 12px; background: conic-gradient(from -135deg at 50% 100%, #f7f2e8 90deg, rgba(0,0,0,0) 90deg) 0 0 / 18px 12px repeat-x;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ponytail: design-editor props frozen to their defaults; edit these constants to retheme
+const MOTION = 1;                 // 0 (still) … 2 (extra sway)
+const INK = '#b3362a';            // stamp/heart ink: #b3362a #22589f #207a4f #1c1a17
+const APPS_BUILT = 1;             // receipt number
+const LIGHT_DESK = false;
+
+const scene = document.getElementById('scene');
+const wrap = document.getElementById('wrap');
+const paper = document.getElementById('paper');
+const stampEl = document.getElementById('stamp');
+
+scene.style.setProperty('--accent', INK);
+if (LIGHT_DESK) scene.style.background = 'radial-gradient(1000px 760px at 50% 20%, rgba(255,252,242,.9), rgba(255,252,242,0) 72%), #cbc2b2';
+document.getElementById('rno').textContent = String(APPS_BUILT).padStart(6, '0');
+
+const bw = [3,1,2,1,1,3,1,2,2,1,1,3,1,1,2,1,3,1,1,2,1,2,1,3,1,1,2,2];
+const bg = [2,1,1,3,1,1,2,1,1,2,3,1,1,2,1,1,1,2,1,1,3,1,2,1,1,2,1,0];
+const barsEl = document.getElementById('bars');
+bw.forEach((w, i) => {
+  const s = document.createElement('span');
+  s.style.cssText = 'display:block;height:46px;background:#2a231c;width:' + (w * 2) + 'px;margin-right:' + (bg[i] * 1.6) + 'px';
+  barsEl.appendChild(s);
+});
+
+const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+function clock() {
+  const n = new Date();
+  document.getElementById('date').textContent = String(n.getDate()).padStart(2, '0') + ' ' + MONTHS[n.getMonth()] + ' ' + n.getFullYear();
+  const h12 = n.getHours() % 12 || 12;
+  document.getElementById('time').textContent = String(h12).padStart(2, '0') + ':' + String(n.getMinutes()).padStart(2, '0') + ':' + String(n.getSeconds()).padStart(2, '0') + (n.getHours() < 12 ? ' AM' : ' PM');
+}
+clock();
+setInterval(clock, 1000);
+
+let mx = 0, my = 0;
+const cur = { rx: 0, ry: 0 };
+const spr = { x: 0, v: 0 };
+const nod = { x: 0, v: 0 };
+let drag = null;
+let fit = 1, scaledH = 900, printed = false, stamped = false;
+const t0 = performance.now();
+let last = t0;
+
+function measure() {
+  const h = paper.offsetHeight || 900;
+  fit = Math.max(0.4, Math.min(1, (innerHeight - 78) / h, (innerWidth - 20) / 378));
+  scaledH = h * fit;
+}
+addEventListener('resize', measure);
+measure();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+setTimeout(measure, 700);
+
+addEventListener('pointermove', (e) => {
+  mx = (e.clientX / innerWidth) * 2 - 1;
+  my = (e.clientY / innerHeight) * 2 - 1;
+  if (drag) {
+    drag.dx = e.clientX - drag.x0;
+    if (Math.abs(drag.dx) > 6) drag.moved = true;
+  }
+});
+
+wrap.addEventListener('pointerdown', (e) => {
+  if (!printed) return;
+  drag = { x0: e.clientX, dx: 0, moved: false, vel: 0 };
+  wrap.style.cursor = 'grabbing';
+});
+
+addEventListener('pointerup', () => {
+  const d = drag;
+  if (!d) return;
+  drag = null;
+  wrap.style.cursor = 'grab';
+  if (!d.moved) {
+    stamped = !stamped;
+    stampEl.hidden = !stamped;   // display:none→block replays the stampIn animation
+    nod.v -= 150;
+  } else {
+    spr.v = Math.max(-320, Math.min(320, d.vel));
+  }
+});
+
+function tick(now) {
+  const dt = Math.min(0.04, Math.max(0.001, (now - last) / 1000));
+  last = now;
+  const t = (now - t0) / 1000;
+
+  // stepped print progress: 16 dot-matrix advances over 2.4s after a .55s delay
+  const D = 0.55, DUR = 2.4, N = 16;
+  const p = Math.min(1, Math.max(0, (t - D) / DUR));
+  const i = Math.floor(p * N), f = p * N - i;
+  const sp = Math.min(1, (i + (1 - Math.pow(1 - f, 3))) / N);
+  if (p >= 1 && !printed) printed = true;
+
+  const ramp = Math.min(1, Math.max(0, (t - D - DUR) / 1.3));
+  const k = Math.min(1, dt * 5);
+  cur.rx += (-my * 6 * MOTION - cur.rx) * k;
+  cur.ry += (mx * 8 * MOTION - cur.ry) * k;
+
+  if (drag) {
+    const target = Math.max(-72, Math.min(72, drag.dx * 0.35));
+    drag.vel = drag.vel * 0.5 + ((target - spr.x) / dt) * 0.5;
+    spr.x = target;
+    spr.v = 0;
+  } else {
+    spr.v += (-30 * spr.x - 3.4 * spr.v) * dt;
+    spr.x += spr.v * dt;
+  }
+  nod.v += (-70 * nod.x - 5.5 * nod.v) * dt;
+  nod.x += nod.v * dt;
+
+  const printing = sp > 0 && sp < 1;
+  const jx = printing ? Math.sin(t * 82) * 0.7 : 0;
+  const y = (sp - 1) * scaledH;
+  const rz = Math.sin(t * 0.65) * 1.3 * MOTION * ramp;
+  const rx = (cur.rx + Math.sin(t * 0.5) * 1.2 * MOTION) * ramp + nod.x;
+  const ry = cur.ry * ramp + spr.x;
+
+  wrap.style.transform = 'translateX(-50%) translateX(' + jx.toFixed(2) + 'px) translateY(' + y.toFixed(2) + 'px) scale(' + fit.toFixed(3) + ') rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg)';
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
