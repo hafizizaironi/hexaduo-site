@@ -3,86 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hexaduo Receipt</title>
+<title>Hexaduo Ventures</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Cstyle%3E.c%7Bfill:%23282520%7D.a%7Bfill:%23D98A6F%7D.b%7Bfill:%23F7F5F2%7D@media(prefers-color-scheme:dark)%7B.c%7Bfill:%23FCFBF8%7D.a%7Bfill:%23B5523A%7D.b%7Bfill:%23282520%7D%7D%3C/style%3E%3Crect class='c' width='56' height='56' rx='12'/%3E%3Crect class='a' x='15' y='20' width='26' height='5' rx='2.5'/%3E%3Crect class='b' x='15' y='31' width='26' height='5' rx='2.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  html, body { margin: 0; padding: 0; overflow: hidden; background: #171310; }
+  html, body { margin: 0; padding: 0; overflow-x: hidden; background: #171310; }
+  #spacer { width: 1px; }
   @keyframes stampIn { 0% { transform: rotate(-12deg) scale(2.4); opacity: 0; } 55% { transform: rotate(-12deg) scale(.94); opacity: 1; } 100% { transform: rotate(-12deg) scale(1); opacity: 1; } }
   @keyframes ledBlink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: .25; } }
+  @keyframes steam { 0% { transform: rotateX(-90deg) translateY(4px) scaleX(1); opacity: 0; } 30% { opacity: .5; } 100% { transform: rotateX(-90deg) translateY(-30px) scaleX(1.5); opacity: 0; } }
+  .scr { transition: opacity .8s ease; }
+  #hint, #cap1, #cap2 { transition: opacity .25s ease; }
+  #cap1, #cap2 { text-shadow: 0 1px 16px rgba(15,10,6,.75), 0 0 3px rgba(15,10,6,.6); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) { .steam { display: none; } .led { animation: none !important; } }
 </style>
 </head>
 <body>
+<h1 class="sr-only">Hexaduo Ventures — an independent iOS app studio. A party of two. First app: Wandery, café hunting with friends.</h1>
 
 <div id="scene" style="position: fixed; inset: 0; overflow: hidden; background: radial-gradient(1000px 760px at 50% 20%, rgba(255,233,200,.09), rgba(255,233,200,0) 72%), #171310; perspective: 1300px; perspective-origin: 50% 14%; font-family: 'Space Mono', 'Courier New', monospace;">
+  <div id="world" style="position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 0 0; will-change: transform;">
 
-  <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 470px; max-width: 96vw; height: 60px; z-index: 6; background: linear-gradient(180deg, #2e2925, #1c1815 78%, #12100d); border-radius: 0 0 18px 18px; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.06);">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px;">
-      <span style="width: 7px; height: 7px; border-radius: 50%; background: #8fe6a4; box-shadow: 0 0 8px rgba(143,230,164,.9); animation: ledBlink 1.5s steps(1) infinite;"></span>
-      <span style="font-size: 10px; letter-spacing: 3px; color: #8d8378;">HEXADUO POS · HD-02</span>
-    </div>
-    <div style="position: absolute; left: 50%; bottom: 9px; transform: translateX(-50%); width: 404px; max-width: 88%; height: 9px; border-radius: 6px; background: #070605; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.05);"></div>
-  </div>
+    <div id="printerSet" style="position: absolute; inset: 0; transform-style: preserve-3d;">
 
-  <div style="position: absolute; top: 46px; left: 0; right: 0; bottom: 0; z-index: 2;">
-    <div id="wrap" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateY(-120%); transform-origin: top center; transform-style: preserve-3d; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; will-change: transform;">
-      <div id="paper" style="position: relative; width: 378px; padding: 24px 22px 34px; box-sizing: border-box; color: #28221c; background: repeating-linear-gradient(0deg, rgba(31,26,20,.02) 0px, rgba(31,26,20,.02) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 3px), linear-gradient(90deg, rgba(31,26,20,.07), rgba(0,0,0,0) 9%, rgba(0,0,0,0) 91%, rgba(31,26,20,.07)), #f7f2e8; box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 12px 28px rgba(0,0,0,.4);">
-
-        <div style="text-align: center;">
-          <svg width="56" height="56" viewBox="0 0 56 56" aria-label="Hexaduo — the equals mark" style="display: block; margin: 2px auto 14px;">
-            <rect x="0" y="0" width="56" height="56" rx="12" fill="#28221c"/>
-            <rect x="15" y="20" width="26" height="5" rx="2.5" fill="#D98A6F"/>
-            <rect x="15" y="31" width="26" height="5" rx="2.5" fill="#F7F5F2"/>
-          </svg>
-          <div style="font-size: 19px; font-weight: 700; letter-spacing: 3px;">HEXADUO VENTURES</div>
-          <div style="font-size: 10px; letter-spacing: 4px; margin-top: 5px;">INDEPENDENT iOS APP STUDIO</div>
-          <div style="font-size: 10px; letter-spacing: 2px; margin-top: 3px; opacity: .65;">EST. 2026 · A PARTY OF TWO</div>
+      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateZ(12px); width: 470px; max-width: 96vw; height: 60px; z-index: 6; background: linear-gradient(180deg, #2e2925, #1c1815 78%, #12100d); border-radius: 0 0 18px 18px; box-shadow: 0 18px 40px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.06);">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 36px;">
+          <span class="led" style="width: 7px; height: 7px; border-radius: 50%; background: #8fe6a4; box-shadow: 0 0 8px rgba(143,230,164,.9); animation: ledBlink 1.5s steps(1) infinite;"></span>
+          <span style="font-size: 10px; letter-spacing: 3px; color: #8d8378;">HEXADUO POS · HD-02</span>
         </div>
+        <div style="position: absolute; left: 50%; bottom: 9px; transform: translateX(-50%); width: 404px; max-width: 88%; height: 9px; border-radius: 6px; background: #070605; box-shadow: inset 0 2px 4px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.05);"></div>
+      </div>
 
-        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 12px 0 8px;">------------------------------------------------------</div>
+      <div id="slot" style="position: absolute; top: 46px; left: 0; right: 0; bottom: 0; z-index: 2; transform-style: preserve-3d;">
+        <div id="wrap" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateY(-120%); transform-origin: top center; transform-style: preserve-3d; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; will-change: transform;">
+          <div id="paper" style="position: relative; width: 378px; padding: 24px 22px 34px; box-sizing: border-box; color: #28221c; background: repeating-linear-gradient(0deg, rgba(31,26,20,.02) 0px, rgba(31,26,20,.02) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 3px), linear-gradient(90deg, rgba(31,26,20,.07), rgba(0,0,0,0) 9%, rgba(0,0,0,0) 91%, rgba(31,26,20,.07)), #f7f2e8; box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 12px 28px rgba(0,0,0,.4);">
 
-        <div style="display: flex; justify-content: space-between; font-size: 11px;"><span>RECEIPT #<span id="rno">000001</span></span><span id="date"></span></div>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 3px;"><span>CASHIER: HAFIZI</span><span id="time"></span></div>
+            <div style="text-align: center;">
+              <svg width="56" height="56" viewBox="0 0 56 56" aria-label="Hexaduo — the equals mark" style="display: block; margin: 2px auto 14px;">
+                <rect x="0" y="0" width="56" height="56" rx="12" fill="#28221c"/>
+                <rect x="15" y="20" width="26" height="5" rx="2.5" fill="#D98A6F"/>
+                <rect x="15" y="31" width="26" height="5" rx="2.5" fill="#F7F5F2"/>
+              </svg>
+              <div style="font-size: 19px; font-weight: 700; letter-spacing: 3px;">HEXADUO VENTURES</div>
+              <div style="font-size: 10px; letter-spacing: 4px; margin-top: 5px;">INDEPENDENT iOS APP STUDIO</div>
+              <div style="font-size: 10px; letter-spacing: 2px; margin-top: 3px; opacity: .65;">EST. 2026 · A PARTY OF TWO</div>
+            </div>
 
-        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 8px 0 10px;">------------------------------------------------------</div>
+            <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 12px 0 8px;">------------------------------------------------------</div>
 
-        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">2×</span><span style="flex: none; font-weight: 700;">FOUNDERS</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">FREE</span></div>
-        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">1×</span><span style="flex: none; font-weight: 700;">BIG DREAM</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">NO LIMIT</span></div>
-        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">1×</span><span style="flex: none; font-weight: 700;">FIRST APP (iOS)</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">SOON</span></div>
-        <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">∞×</span><span style="flex: none; font-weight: 700;">ESPRESSO</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">SUNK COST</span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px;"><span>RECEIPT #<span id="rno">000001</span></span><span id="date"></span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 3px;"><span>CASHIER: HAFIZI</span><span id="time"></span></div>
 
-        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; margin: 6px 0 10px;">======================================================</div>
+            <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 8px 0 10px;">------------------------------------------------------</div>
 
-        <div style="position: relative;">
-          <div style="display: flex; justify-content: space-between; font-size: 11.5px;"><span>SUBTOTAL</span><span>GOOD VIBES</span></div>
-          <div style="display: flex; justify-content: space-between; font-size: 11.5px; margin-top: 3px;"><span>TAX</span><span>NONE</span></div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; font-weight: 700; margin-top: 8px;"><span>TOTAL</span><span>$$$</span></div>
-          <div style="text-align: center; font-size: 10px; letter-spacing: 1.5px; opacity: .65; margin-top: 10px;">PAID IN FULL</div>
-          <div id="stamp" hidden style="position: absolute; right: -4px; top: -26px; z-index: 3; pointer-events: none; animation: stampIn .38s cubic-bezier(.2,1.7,.45,1) both;">
-            <div style="border: 3px solid var(--accent, #b3362a); color: var(--accent, #b3362a); border-radius: 999px; padding: 7px 16px; font-weight: 700; font-size: 14px; letter-spacing: 3px; box-shadow: inset 0 0 0 1.5px var(--accent, #b3362a); opacity: .88; mix-blend-mode: multiply; background: rgba(247,242,232,.15);">APPROVED</div>
+            <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">2×</span><span style="flex: none; font-weight: 700;">FOUNDERS</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">FREE</span></div>
+            <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">1×</span><span style="flex: none; font-weight: 700;">BIG DREAM</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">NO LIMIT</span></div>
+            <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">1×</span><span style="flex: none; font-weight: 700;">FIRST APP (iOS)</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">SOON</span></div>
+            <div style="display: flex; align-items: baseline; font-size: 12.5px; margin-bottom: 7px;"><span style="width: 30px; flex: none; opacity: .75;">∞×</span><span style="flex: none; font-weight: 700;">ESPRESSO</span><span style="flex: 1 1 auto; margin: 0 7px; border-bottom: 2px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span style="flex: none;">SUNK COST</span></div>
+
+            <div style="overflow: hidden; white-space: nowrap; font-size: 11px; margin: 6px 0 10px;">======================================================</div>
+
+            <div style="position: relative;">
+              <div style="display: flex; justify-content: space-between; font-size: 11.5px;"><span>SUBTOTAL</span><span>GOOD VIBES</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 11.5px; margin-top: 3px;"><span>TAX</span><span>NONE</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; font-weight: 700; margin-top: 8px;"><span>TOTAL</span><span>$$$</span></div>
+              <div style="text-align: center; font-size: 10px; letter-spacing: 1.5px; opacity: .65; margin-top: 10px;">PAID IN FULL</div>
+              <div id="stamp" hidden style="position: absolute; right: -4px; top: -26px; z-index: 3; pointer-events: none; animation: stampIn .38s cubic-bezier(.2,1.7,.45,1) both;">
+                <div style="border: 3px solid var(--accent, #b3362a); color: var(--accent, #b3362a); border-radius: 999px; padding: 7px 16px; font-weight: 700; font-size: 14px; letter-spacing: 3px; box-shadow: inset 0 0 0 1.5px var(--accent, #b3362a); opacity: .88; mix-blend-mode: multiply; background: rgba(247,242,232,.15);">APPROVED</div>
+              </div>
+            </div>
+
+            <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 12px 0;">------------------------------------------------------</div>
+
+            <div style="border: 1.5px solid rgba(40,34,28,.85); padding: 9px 10px; text-align: center; font-size: 10.5px; letter-spacing: 2px;">DRAG ME · TAP TO STAMP</div>
+
+            <div id="bars" style="display: flex; justify-content: center; align-items: flex-end; margin: 18px 0 6px; height: 46px;"></div>
+            <div style="text-align: center; font-size: 10px; letter-spacing: 8px; padding-left: 8px; margin-bottom: 14px;">HEXADUO</div>
+
+            <div style="text-align: center;">
+              <div style="font-size: 12.5px; font-weight: 700; letter-spacing: 2px;">THANK YOU &amp; STAY TUNED</div>
+              <div style="font-size: 10px; letter-spacing: 1.5px; opacity: .7; margin-top: 4px;">SEE YOU ON THE APP STORE · 2026</div>
+              <div style="font-size: 12px; margin-top: 10px; color: var(--accent, #b3362a);">· ♥ ·</div>
+            </div>
+
+            <div style="position: absolute; left: 0; right: 0; bottom: -11px; height: 12px; background: conic-gradient(from -135deg at 50% 100%, #f7f2e8 90deg, rgba(0,0,0,0) 90deg) 0 0 / 18px 12px repeat-x;"></div>
           </div>
         </div>
-
-        <div style="overflow: hidden; white-space: nowrap; font-size: 11px; opacity: .7; margin: 12px 0;">------------------------------------------------------</div>
-
-        <div style="border: 1.5px solid rgba(40,34,28,.85); padding: 9px 10px; text-align: center; font-size: 10.5px; letter-spacing: 2px;">DRAG ME · TAP TO STAMP</div>
-
-        <div id="bars" style="display: flex; justify-content: center; align-items: flex-end; margin: 18px 0 6px; height: 46px;"></div>
-        <div style="text-align: center; font-size: 10px; letter-spacing: 8px; padding-left: 8px; margin-bottom: 14px;">HEXADUO</div>
-
-        <div style="text-align: center;">
-          <div style="font-size: 12.5px; font-weight: 700; letter-spacing: 2px;">THANK YOU &amp; STAY TUNED</div>
-          <div style="font-size: 10px; letter-spacing: 1.5px; opacity: .7; margin-top: 4px;">SEE YOU ON THE APP STORE · 2026</div>
-          <div style="font-size: 12px; margin-top: 10px; color: var(--accent, #b3362a);">· ♥ ·</div>
-        </div>
-
-        <div style="position: absolute; left: 0; right: 0; bottom: -11px; height: 12px; background: conic-gradient(from -135deg at 50% 100%, #f7f2e8 90deg, rgba(0,0,0,0) 90deg) 0 0 / 18px 12px repeat-x;"></div>
       </div>
     </div>
+
+    <!-- ── The desk: a horizontal plane the printer sits on ── -->
+    <div id="desk" style="position: absolute; left: 50%; top: 0; width: 2600px; height: 1900px; margin-left: -1300px; transform-origin: 50% 0; transform-style: preserve-3d; background-color: #171310; background-image: radial-gradient(1500px 1000px at 50% 42%, rgba(0,0,0,0) 52%, #171310 92%), radial-gradient(760px 560px at 1730px 620px, rgba(255,196,150,.16), rgba(255,196,150,0) 70%), repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 2px, rgba(0,0,0,0) 2px 150px), repeating-linear-gradient(89deg, rgba(255,255,255,.015) 0 3px, rgba(0,0,0,.02) 3px 11px);">
+
+      <!-- The staged Wandery flat-lay -->
+      <div id="flatlay" style="position: absolute; left: 1280px; top: 300px; width: 900px; height: 640px; transform-style: preserve-3d; transform-origin: 50% 50%;">
+
+        <!-- phone (hero) -->
+        <div id="phone" style="position: absolute; left: 300px; top: 20px; width: 300px; height: 620px; border-radius: 48px; background: #0d0b0a; box-shadow: inset 0 0 0 1.5px #2a2521, 14px 26px 40px rgba(0,0,0,.5); transform: rotateZ(-4deg) translateZ(16px); transform-style: preserve-3d;">
+          <img class="scr" alt="" data-src="assets/scr-feed.jpg" width="280" height="600" decoding="async" style="position: absolute; inset: 10px; width: 280px; height: 600px; object-fit: cover; border-radius: 38px; opacity: 1; background: #111;">
+          <img class="scr" alt="" data-src="assets/scr-guest.jpg" width="280" height="600" decoding="async" style="position: absolute; inset: 10px; width: 280px; height: 600px; object-fit: cover; border-radius: 38px; opacity: 0; background: #111;">
+          <img class="scr" alt="" data-src="assets/scr-map.jpg" width="280" height="600" decoding="async" style="position: absolute; inset: 10px; width: 280px; height: 600px; object-fit: cover; border-radius: 38px; opacity: 0; background: #111;">
+          <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 86px; height: 26px; border-radius: 16px; background: #000;"></div>
+        </div>
+
+        <!-- polaroid A · Mokky's -->
+        <div style="position: absolute; left: 30px; top: 30px; width: 200px; background: #fdfcf9; padding: 10px 10px 0; border-radius: 3px; box-shadow: 8px 16px 26px rgba(0,0,0,.42); transform: rotateZ(-7deg) translateZ(6px);">
+          <img class="pol" alt="" data-src="assets/pol-mokkys.jpg" width="180" height="180" decoding="async" style="display: block; width: 180px; height: 180px; object-fit: cover; background: #cbb9a6;">
+          <div style="font-family: 'Caveat', cursive; font-size: 23px; color: #3a332c; text-align: center; padding: 7px 4px 12px; line-height: 1;">mokky's — first hunt ☕</div>
+        </div>
+
+        <!-- polaroid B · KLCC -->
+        <div style="position: absolute; left: 630px; top: -34px; width: 200px; background: #fdfcf9; padding: 10px 10px 0; border-radius: 3px; box-shadow: 8px 16px 26px rgba(0,0,0,.42); transform: rotateZ(8deg) translateZ(8px);">
+          <img class="pol" alt="" data-src="assets/pol-klcc.jpg" width="180" height="180" decoding="async" style="display: block; width: 180px; height: 180px; object-fit: cover; background: #9fb0c0;">
+          <div style="font-family: 'Caveat', cursive; font-size: 23px; color: #3a332c; text-align: center; padding: 7px 4px 12px; line-height: 1;">KLCC, 7:46 AM — worth it</div>
+        </div>
+
+        <!-- order ticket -->
+        <div id="ticket" style="position: absolute; left: 60px; top: 428px; width: 250px; background: #f7f2e8; color: #28221c; font-family: 'Space Mono', monospace; padding: 14px 16px 20px; border-radius: 2px; box-shadow: 6px 14px 22px rgba(0,0,0,.38); transform: rotateZ(4deg) translateZ(5px);">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 2px; text-align: center;">ORDER #001</div>
+          <div style="border-top: 1.5px dashed rgba(40,34,28,.4); margin: 9px 0;"></div>
+          <div style="display: flex; align-items: baseline; font-size: 12px;"><span style="font-weight: 700;">1× WANDERY</span><span style="flex: 1; margin: 0 6px; border-bottom: 1.5px dotted rgba(40,34,28,.4); transform: translateY(-3px);"></span><span>BREWING</span></div>
+          <div style="font-size: 9px; letter-spacing: 1.5px; opacity: .7; margin-top: 9px; text-align: center;">NOW BREWING · TESTFLIGHT · 2026</div>
+          <div style="position: absolute; left: 0; right: 0; bottom: -6px; height: 7px; background: conic-gradient(from -135deg at 50% 100%, #f7f2e8 90deg, rgba(0,0,0,0) 90deg) 0 0 / 12px 7px repeat-x;"></div>
+        </div>
+
+        <!-- coffee cup + steam -->
+        <div id="cup" style="position: absolute; left: 650px; top: 430px; width: 150px; height: 150px; transform: translateZ(6px); transform-style: preserve-3d;">
+          <div style="position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 46%, #2e1c11 0 22%, #4a2f1d 22% 27%, #d9cdb8 27% 31%, #f0e9dc 31% 46%, rgba(0,0,0,0) 47%); box-shadow: 5px 12px 20px rgba(0,0,0,.4);"></div>
+          <div class="steam" style="position: absolute; left: 50%; top: 44px; margin-left: -8px; width: 16px; height: 64px; border-radius: 9px; background: linear-gradient(to top, rgba(255,255,255,.5), rgba(255,255,255,0)); transform-origin: 50% 100%; transform: rotateX(-90deg); animation: steam 3.4s ease-in-out infinite;"></div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
+
+<!-- screen-space overlays (outside the 3D world) -->
+<div id="hint" style="position: fixed; left: 0; right: 0; bottom: 26px; text-align: center; z-index: 20; opacity: 0; pointer-events: none; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; color: rgba(247,242,232,.72);">SCROLL — PULL BACK ▼</div>
+
+<div id="cap1" style="position: fixed; left: clamp(20px,5vw,64px); top: 42%; z-index: 20; opacity: 0; pointer-events: none; font-family: 'Space Mono', monospace; max-width: 300px;">
+  <div style="font-size: 11px; letter-spacing: 3px; color: var(--accent, #B5523A); font-weight: 700;">02 — THE STUDIO</div>
+  <div style="font-size: clamp(22px,3vw,32px); line-height: 1.15; color: #f4efe6; margin-top: 10px; letter-spacing: 1px;">THE DESK WHERE IT HAPPENS</div>
+</div>
+
+<div id="cap2" style="position: fixed; left: clamp(20px,5vw,64px); bottom: clamp(30px,7vh,72px); z-index: 20; opacity: 0; pointer-events: none; font-family: 'Space Mono', monospace; max-width: 340px;">
+  <div style="font-size: 11px; letter-spacing: 3px; color: var(--accent, #B5523A); font-weight: 700;">FIRST ORDER</div>
+  <div style="font-family: 'Space Mono', monospace; font-size: clamp(30px,5vw,52px); line-height: 1.02; color: #f4efe6; margin-top: 8px; letter-spacing: 1px; font-weight: 700;">WANDERY</div>
+  <div style="font-size: 14px; line-height: 1.5; color: rgba(244,239,230,.82); margin-top: 12px;">café hunting with friends.</div>
+  <div style="font-size: 10px; letter-spacing: 2px; color: rgba(244,239,230,.6); margin-top: 10px;">NOW BREWING · TESTFLIGHT</div>
+  <div style="font-family: 'Caveat', cursive; font-size: 26px; color: var(--accent, #B5523A); margin-top: 14px;">Stay hunting. 🔥</div>
+</div>
+
+<div id="hud" hidden style="position: fixed; left: 8px; bottom: 8px; z-index: 30; font-family: 'Space Mono', monospace; font-size: 11px; color: #8fe6a4; background: rgba(0,0,0,.6); padding: 6px 9px; border-radius: 6px; white-space: pre; pointer-events: none;"></div>
+
+<div id="spacer"></div>
 
 <script>
 // ponytail: design-editor props frozen to their defaults; edit these constants to retheme
@@ -91,14 +169,45 @@ const INK = '#B5523A';            // brand terracotta (logo 1d); alts: #22589f #
 const APPS_BUILT = 1;             // receipt number
 const LIGHT_DESK = false;
 
+// ── drone-flight tunables ──────────────────────────────────────────────
+const SCROLL_LEN = 520;           // vh of scroll runway
+const FLAT = { x: 430, z: 620 };  // flat-lay centre in world px (y = deskY, computed at runtime)
+// camera path: ff = 0..1 lerp of focus from receipt→flat-lay; focus is always screen-centred
+const FLIGHT = [
+  { p: 0.00, ff: 0,   pitch: 0,   yaw: 0,   dolly: 0,    po: 14 },  // beat 1 — identical to today
+  { p: 0.30, ff: 0,   pitch: 0,   yaw: 0,   dolly: 0,    po: 14 },  // hold — interactive dwell
+  { p: 0.52, ff: 0.5, pitch: -34, yaw: 0,   dolly: -160, po: 30 },  // crane up, desk revealed
+  { p: 0.72, ff: 1,   pitch: -58, yaw: 0,   dolly: -240, po: 42 },  // high over the flat-lay
+  { p: 0.88, ff: 1,   pitch: -60, yaw: -5,  dolly: -140, po: 44 },  // near top-down
+  { p: 1.00, ff: 1,   pitch: -46, yaw: -11, dolly: 60,   po: 44 },  // settle: 3/4 hero on phone
+];
+
 const scene = document.getElementById('scene');
+const world = document.getElementById('world');
+const desk = document.getElementById('desk');
+const flat = document.getElementById('flatlay');
 const wrap = document.getElementById('wrap');
 const paper = document.getElementById('paper');
 const stampEl = document.getElementById('stamp');
+const cap1 = document.getElementById('cap1');
+const cap2 = document.getElementById('cap2');
+const hint = document.getElementById('hint');
+const hud = document.getElementById('hud');
+const spacer = document.getElementById('spacer');
+const scrs = [...document.querySelectorAll('#phone .scr')];
 
-scene.style.setProperty('--accent', INK);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MOT = RM ? 0 : MOTION;
+const DEBUG = location.hash.startsWith('#debug');
+function readFreeze() { const m = location.hash.match(/#p=([0-9.]+)/); return m ? parseFloat(m[1]) : null; }  // #p=0.72 → snap camera for inspection
+let freezeVal = readFreeze();
+addEventListener('hashchange', () => { freezeVal = readFreeze(); spacer.style.height = (freezeVal != null ? 100 : SCROLL_LEN) + 'vh'; if (DEBUG || location.hash.startsWith('#debug')) hud.hidden = false; });
+if (DEBUG) hud.hidden = false;
+
+document.body.style.setProperty('--accent', INK);
 if (LIGHT_DESK) scene.style.background = 'radial-gradient(1000px 760px at 50% 20%, rgba(255,252,242,.9), rgba(255,252,242,0) 72%), #cbc2b2';
 document.getElementById('rno').textContent = String(APPS_BUILT).padStart(6, '0');
+spacer.style.height = (freezeVal != null ? 100 : SCROLL_LEN) + 'vh';
 
 const bw = [3,1,2,1,1,3,1,2,2,1,1,3,1,1,2,1,3,1,1,2,1,2,1,3,1,1,2,2];
 const bg = [2,1,1,3,1,1,2,1,1,2,3,1,1,2,1,1,1,2,1,1,3,1,2,1,1,2,1,0];
@@ -119,12 +228,28 @@ function clock() {
 clock();
 setInterval(clock, 1000);
 
+// ── helpers ──
+const clamp01 = v => Math.min(1, Math.max(0, v));
+const ss = (a, b, v) => { const t = clamp01((v - a) / (b - a)); return t; };
+const sstep = (a, b, v) => { const t = clamp01((v - a) / (b - a)); return t * t * (3 - 2 * t); };
+function mix(a, b, t) {
+  const h = s => [parseInt(s.slice(1,3),16), parseInt(s.slice(3,5),16), parseInt(s.slice(5,7),16)];
+  const pa = h(a), pb = h(b), c = pa.map((v, i) => Math.round(v + (pb[i] - v) * t));
+  return 'rgb(' + c[0] + ',' + c[1] + ',' + c[2] + ')';
+}
+function camAt(p) {
+  let a = FLIGHT[0], b = FLIGHT[FLIGHT.length - 1];
+  for (let i = 1; i < FLIGHT.length; i++) if (FLIGHT[i].p >= p) { a = FLIGHT[i - 1]; b = FLIGHT[i]; break; }
+  const e = b.p > a.p ? sstep(a.p, b.p, p) : 1, L = k => a[k] + (b[k] - a[k]) * e;
+  return { ff: L('ff'), pitch: L('pitch'), yaw: L('yaw'), dolly: L('dolly'), po: L('po') };
+}
+
 let mx = 0, my = 0;
 const cur = { rx: 0, ry: 0 };
 const spr = { x: 0, v: 0 };
 const nod = { x: 0, v: 0 };
 let drag = null;
-let fit = 1, scaledH = 900, printed = false, stamped = false;
+let fit = 1, scaledH = 900, deskY = 900, flatK = 1, maxScroll = 1, lastLit = -1, printed = false, stamped = false, prog = 0, scrIdx = 0, imgsLoaded = false;
 const t0 = performance.now();
 let last = t0;
 
@@ -132,6 +257,11 @@ function measure() {
   const h = paper.offsetHeight || 900;
   fit = Math.max(0.4, Math.min(1, (innerHeight - 78) / h, (innerWidth - 20) / 378));
   scaledH = h * fit;
+  deskY = Math.max(760, innerHeight * 0.9, 46 + scaledH + 130);  // keep the desk's near edge below the fold on tall viewports
+  desk.style.transform = 'translateY(' + deskY + 'px) rotateX(90deg)';
+  flatK = Math.max(0.62, Math.min(1, innerWidth / 780));
+  flat.style.transform = 'scale(' + flatK + ')';
+  maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);  // constant between resizes — read here, not per frame
 }
 addEventListener('resize', measure);
 measure();
@@ -148,7 +278,7 @@ addEventListener('pointermove', (e) => {
 });
 
 wrap.addEventListener('pointerdown', (e) => {
-  if (!printed) return;
+  if (!printed || prog > 0.15) return;   // interactions only in the printer close-up
   drag = { x0: e.clientX, dx: 0, moved: false, vel: 0 };
   wrap.style.cursor = 'grabbing';
 });
@@ -159,35 +289,46 @@ addEventListener('pointerup', () => {
   drag = null;
   wrap.style.cursor = 'grab';
   if (!d.moved) {
+    if (prog > 0.15) return;              // no stamping once the camera has left
     stamped = !stamped;
-    stampEl.hidden = !stamped;   // display:none→block replays the stampIn animation
+    stampEl.hidden = !stamped;            // display:none→block replays the stampIn animation
     nod.v -= 150;
   } else {
     spr.v = Math.max(-320, Math.min(320, d.vel));
   }
 });
+addEventListener('pointercancel', () => { drag = null; wrap.style.cursor = 'grab'; });  // browser stole the gesture to scroll
 
 function tick(now) {
   const dt = Math.min(0.04, Math.max(0.001, (now - last) / 1000));
   last = now;
   const t = (now - t0) / 1000;
 
-  // stepped print progress: 16 dot-matrix advances over 2.4s after a .55s delay
+  // ── scroll → flight progress ──
+  const target = clamp01(scrollY / maxScroll);
+  if (freezeVal != null) prog = freezeVal;                      // #p=<n> snaps for inspection
+  else if (RM) prog = target < 0.33 ? 0 : target < 0.7 ? 0.62 : 1;   // jump-cut between beats
+  else prog += (target - prog) * Math.min(1, dt * 7);           // drone inertia
+  if (!imgsLoaded && prog > 0.2) { imgsLoaded = true; document.querySelectorAll('[data-src]').forEach(m => { m.src = m.dataset.src; }); }
+
+  // ── receipt print (time-based, unchanged) ──
   const D = 0.55, DUR = 2.4, N = 16;
-  const p = Math.min(1, Math.max(0, (t - D) / DUR));
-  const i = Math.floor(p * N), f = p * N - i;
-  const sp = Math.min(1, (i + (1 - Math.pow(1 - f, 3))) / N);
-  if (p >= 1 && !printed) printed = true;
+  const pp = Math.min(1, Math.max(0, (t - D) / DUR));
+  const i = Math.floor(pp * N), f = pp * N - i;
+  let sp = Math.min(1, (i + (1 - Math.pow(1 - f, 3))) / N);
+  if (RM) sp = 1;
+  if (sp >= 1 && !printed) printed = true;
 
   const ramp = Math.min(1, Math.max(0, (t - D - DUR) / 1.3));
+  const att = 1 - sstep(0.12, 0.35, prog);   // fade the receipt's own sway/parallax as we pull back
   const k = Math.min(1, dt * 5);
-  cur.rx += (-my * 6 * MOTION - cur.rx) * k;
-  cur.ry += (mx * 8 * MOTION - cur.ry) * k;
+  cur.rx += (-my * 6 * MOT * att - cur.rx) * k;
+  cur.ry += (mx * 8 * MOT * att - cur.ry) * k;
 
   if (drag) {
-    const target = Math.max(-72, Math.min(72, drag.dx * 0.35));
-    drag.vel = drag.vel * 0.5 + ((target - spr.x) / dt) * 0.5;
-    spr.x = target;
+    const target2 = Math.max(-72, Math.min(72, drag.dx * 0.35));
+    drag.vel = drag.vel * 0.5 + ((target2 - spr.x) / dt) * 0.5;
+    spr.x = target2;
     spr.v = 0;
   } else {
     spr.v += (-30 * spr.x - 3.4 * spr.v) * dt;
@@ -199,11 +340,50 @@ function tick(now) {
   const printing = sp > 0 && sp < 1;
   const jx = printing ? Math.sin(t * 82) * 0.7 : 0;
   const y = (sp - 1) * scaledH;
-  const rz = Math.sin(t * 0.65) * 1.3 * MOTION * ramp;
-  const rx = (cur.rx + Math.sin(t * 0.5) * 1.2 * MOTION) * ramp + nod.x;
+  const rz = Math.sin(t * 0.65) * 1.3 * MOT * ramp * att;
+  const rx = (cur.rx + Math.sin(t * 0.5) * 1.2 * MOT * att) * ramp + nod.x;
   const ry = cur.ry * ramp + spr.x;
-
   wrap.style.transform = 'translateX(-50%) translateX(' + jx.toFixed(2) + 'px) translateY(' + y.toFixed(2) + 'px) scale(' + fit.toFixed(3) + ') rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg)';
+
+  // ── camera: focus-centred orbit over the desk ──
+  // move focus → perspective-origin, orbit about it, dolly. Keeps the subject screen-centred
+  // for any viewport. focus lerps receipt-centre → flat-lay-centre (ff).
+  const c = camAt(prog);
+  const hero = ss(0.82, 1, prog);
+  const pitch = c.pitch + my * 1.4 * hero * MOT;   // gentle look-around at the hero
+  const yaw = c.yaw + mx * 2.0 * hero * MOT;
+  const cx = innerWidth / 2, cy = innerHeight * c.po / 100;
+  const fx = cx + FLAT.x * c.ff;                   // receipt centre (cx, .14h) → flat-lay (cx+FLAT.x, deskY, FLAT.z)
+  const fy = innerHeight * 0.14 + (deskY - innerHeight * 0.14) * c.ff;
+  const fz = FLAT.z * c.ff;
+  world.style.transform =
+    'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) translateZ(' + c.dolly.toFixed(1) + 'px)' +
+    ' rotateX(' + pitch.toFixed(2) + 'deg) rotateY(' + yaw.toFixed(2) + 'deg)' +
+    ' translate3d(' + (-fx).toFixed(1) + 'px,' + (-fy).toFixed(1) + 'px,' + (-fz).toFixed(1) + 'px)';
+  scene.style.perspectiveOrigin = '50% ' + c.po.toFixed(2) + '%';
+  const lit = sstep(0.22, 0.55, prog);   // dark→wood; only rewrite when it actually changes (skips idle churn)
+  if (Math.abs(lit - lastLit) > 0.002) { lastLit = lit; desk.style.backgroundColor = mix('#171310', '#3d2c1e', lit); }
+
+  // ── overlays ──
+  const win = (v, a, b, c2, d) => ss(a, b, v) * (1 - ss(c2, d, v));
+  cap1.style.opacity = win(prog, 0.40, 0.46, 0.62, 0.68);
+  cap2.style.opacity = ss(0.84, 0.92, prog);
+  hint.style.opacity = printed ? (1 - ss(0.01, 0.045, prog)) : 0;
+
+  // ── phone screen auto-cycle: scrs[0] (feed) is an always-on base; upper screens fade over it,
+  //    so the phone never dips through black mid-crossfade. Only switch to an already-loaded screen. ──
+  if (prog > 0.75 && !RM && imgsLoaded) {
+    const idx = Math.floor(t / 5) % scrs.length;
+    if (idx !== scrIdx && scrs[idx].complete && scrs[idx].naturalWidth) {
+      scrIdx = idx;
+      for (let n = 1; n < scrs.length; n++) scrs[n].style.opacity = (n === idx) ? 1 : 0;
+    }
+  }
+
+  if (DEBUG) {
+    hud.textContent = 'prog ' + prog.toFixed(3) + '  ff ' + c.ff.toFixed(2) + '  pitch ' + pitch.toFixed(0) + '  yaw ' + yaw.toFixed(0) + '  dolly ' + c.dolly.toFixed(0) + '  po ' + c.po.toFixed(0) + '  deskY ' + deskY.toFixed(0);
+    window.__dbg = { prog: +prog.toFixed(3), deskY: +deskY.toFixed(0), fit: +fit.toFixed(3), printed: printed };
+  }
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);

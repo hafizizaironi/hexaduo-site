@@ -2,7 +2,8 @@
 # Deploy this site to AWS Amplify (app d348k633qx8l8h, branch main).
 set -e
 cd "$(dirname "$0")"
-zip -q -j site.zip index.html
+if [ ! -f assets/scr-feed.jpg ]; then echo "ERROR: assets/ missing — aborting"; exit 1; fi
+zip -q -r site.zip index.html assets -x '*.DS_Store'
 out=$(aws amplify create-deployment --app-id d348k633qx8l8h --branch-name main --output json)
 job=$(printf '%s' "$out" | python3 -c 'import sys,json;print(json.load(sys.stdin)["jobId"])')
 url=$(printf '%s' "$out" | python3 -c 'import sys,json;print(json.load(sys.stdin)["zipUploadUrl"])')
